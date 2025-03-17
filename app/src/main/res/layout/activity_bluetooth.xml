@@ -1,76 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/search_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search for Devices"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
 
-    <ListView
-        android:id="@+id/paired_devices_list"
-        android:layout_width="wrap_content"
-        android:layout_height="243dp"
-        android:layout_below="@id/search_button"
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search for Devices"
+            android:layout_alignParentTop="true"
+            />
+
+        <Button
+            android:id="@+id/reset_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="reset"
+            android:layout_toRightOf="@id/search_button"
+            android:layout_alignParentTop="true"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/paired_devices_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:textSize="24dp"
+        android:layout_marginTop="8dp"
         android:dividerHeight="1dp"
         android:scrollbarAlwaysDrawVerticalTrack="true" />
 
-    <Button
-        android:id="@+id/send_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send Data"
-        android:layout_below="@id/paired_devices_list"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"/>
-    <Button
-        android:id="@+id/send_button_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send 1"
-        android:layout_toLeftOf="@id/send_button_2"
-        android:layout_below="@id/send_button"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
 
-    <Button
-        android:id="@+id/send_button_2"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send 2"
-        android:layout_below="@id/send_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
+        android:background="#ECF4A4"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/send_button_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send 3"
-        android:layout_below="@id/send_button"
-        android:layout_toRightOf="@id/send_button_2"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="Enter data to send"
+            android:id="@+id/data_to_send"
+            android:textSize="24dp"
+            android:layout_below="@id/paired_devices_name"/>
+
+        <Button
+            android:id="@+id/send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/data_to_send"
+
+            android:text="Send Data" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/send_button_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send 1"
+            android:layout_toLeftOf="@id/send_button_2"
+            android:layout_below="@id/send_button"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"/>
+
+        <Button
+            android:id="@+id/send_button_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send 2"
+            android:layout_below="@id/send_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"/>
+
+        <Button
+            android:id="@+id/send_button_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send 3"
+            android:layout_below="@id/send_button"
+            android:layout_toRightOf="@id/send_button_2"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"/>
+
+    </RelativeLayout>
 
 
     <EditText
         android:id="@+id/received_data_edit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
         android:lines="10"
-        android:maxLines="10"
+        android:background="#F8EE99"
+        android:scrollbars="vertical|horizontal"
         android:hint="Received data will appear here"
         android:inputType="textMultiLine"
         android:gravity="top|start"
-        android:editable="false"/>
-</RelativeLayout>
+       />
+</LinearLayout>

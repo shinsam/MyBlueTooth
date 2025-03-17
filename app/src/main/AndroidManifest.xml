@@ -12,25 +12,6 @@
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
-<!--    -->
-
-<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
-<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> &lt;!&ndash; Request legacy Bluetooth permissions on older devices. &ndash;&gt;-->
-<!--    &lt;!&ndash; Request legacy Bluetooth permissions on older devices. &ndash;&gt;-->
-<!--    <uses-permission-->
-<!--        android:name="android.permission.BLUETOOTH"-->
-<!--        android:maxSdkVersion="30" />-->
-<!--    <uses-permission-->
-<!--        android:name="android.permission.BLUETOOTH_ADMIN"-->
-<!--        android:maxSdkVersion="30" />-->
-<!--    <uses-permission-->
-<!--        android:name="android.permission.BLUETOOTH_SCAN"-->
-<!--        android:usesPermissionFlags="neverForLocation" />-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />-->
-<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
-<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
-
 
     <application
         android:allowBackup="true"
@@ -51,8 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BluetoothActivity_v9" android:exported="false"/>
-        <activity android:name=".BluetoothActivity2" android:exported="false"/>
+        <activity android:name=".BluetoothActivity" android:exported="false"/>
+
     </application>
 
 </manifest>
