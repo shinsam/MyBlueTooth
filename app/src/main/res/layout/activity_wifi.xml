@@ -11,11 +11,12 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/search_button"
+            android:id="@+id/connect_button"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:text="Search for Devices" />
+            android:text="connect" />
 
         <Button
             android:id="@+id/reset_button"
@@ -32,15 +33,14 @@
         android:layout_width="match_parent"
         android:layout_height="73dp"
         android:layout_centerHorizontal="true"
-        android:textStyle="bold"
         android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:textColor="#2196F3"
         android:layout_marginBottom="20dp"
         android:dividerHeight="1dp"
+        android:gravity="center"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:textSize="24dp" />
-
+        android:textColor="#2196F3"
+        android:textSize="24dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,11 +68,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="#DFEF3E"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:layout_below="@id/send_button"
-        android:gravity="center">
+        android:background="#DFEF3E"
+        android:gravity="center"
+        android:padding="10dp">
 
         <Button
             android:id="@+id/send_button_1"

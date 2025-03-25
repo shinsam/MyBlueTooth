@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //앱이 구동된 후 곧바로 블루투스 화면으로 넘어가기
-//        Intent intent = new Intent(this , BluetoothActivity.class);
-//        startActivity(intent);
+
     }
 }

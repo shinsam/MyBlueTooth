@@ -71,7 +71,7 @@ public class BluetoothActivity extends Activity {
             finish();
             return;
         }
-        pairedDeviceTextView = findViewById(R.id.paired_devices_name);
+        pairedDeviceTextView = findViewById(R.id.connected_devices_name);
         receivedDataEditText = findViewById(R.id.received_data_edit_text);
         receivedDataEditText.setMovementMethod(new ScrollingMovementMethod());
 
@@ -107,7 +107,7 @@ public class BluetoothActivity extends Activity {
             @Override
             public void onClick(View v) {
                 EditText data_to_send = findViewById(R.id.data_to_send);
-                 sendData(data_to_send.getText().toString());
+                sendData(data_to_send.getText().toString());
             }
         });
 
@@ -119,9 +119,9 @@ public class BluetoothActivity extends Activity {
     }
 
 
-
     /**
      * 데이터를 연결된 블루투스 장치로 전송합니다.
+     *
      * @param data 전송할 데이터
      */
     private void sendData(String data) {
@@ -129,7 +129,7 @@ public class BluetoothActivity extends Activity {
             try {
                 outputStream.write(data.getBytes());
                 Toast.makeText(this, "Data " + data + " sent", Toast.LENGTH_SHORT).show();
-                receivedDataEditText.append("송신:" + data+ "\n");
+                receivedDataEditText.append("송신:" + data + "\n");
 
             } catch (IOException e) {
                 Toast.makeText(this, "Failed to send data. please restart", Toast.LENGTH_SHORT).show();
@@ -150,7 +150,7 @@ public class BluetoothActivity extends Activity {
                 try {
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                         Toast.makeText(getApplicationContext(), "startServer 권한 오류", Toast.LENGTH_SHORT).show();
-                          return;
+                        return;
                     }
                     serverSocket = bluetoothAdapter.listenUsingRfcommWithServiceRecord(APP_NAME, MY_UUID);
                     bluetoothSocket = serverSocket.accept();
@@ -163,7 +163,7 @@ public class BluetoothActivity extends Activity {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(), deviceName + "장치가 연결 요청하였습니다.", Toast.LENGTH_SHORT).show();
-                            pairedDeviceTextView.setText("연결장치:" + deviceName);
+                            pairedDeviceTextView.setText("연결된 장치:" + deviceName);
                         }
                     });
 
@@ -178,6 +178,7 @@ public class BluetoothActivity extends Activity {
 
     /**
      * 연결된 블루투스 소켓을 관리합니다.
+     *
      * @param socket 연결된 블루투스 소켓
      */
     private void manageConnectedSocket(BluetoothSocket socket) {
@@ -290,6 +291,8 @@ public class BluetoothActivity extends Activity {
 
         final ListView listView = new ListView(this);
         listView.setAdapter(devicesArrayAdapter);
+
+
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("연결할 장치를 선택하세요.")
                 .setView(listView)
@@ -359,8 +362,10 @@ public class BluetoothActivity extends Activity {
                 }
                 if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
                     devicesArrayAdapter.add("New: " + device.getName() + "\n" + device.getAddress());
-                    devicesList.add(device);
-                    devicesArrayAdapter.notifyDataSetChanged();
+                    if (!devicesList.contains(device)) {
+                        devicesList.add(device);
+                        devicesArrayAdapter.notifyDataSetChanged();
+                    }
                 }
 
             }
@@ -369,6 +374,7 @@ public class BluetoothActivity extends Activity {
 
     /**
      * 선택한 블루투스 장치에 연결합니다.
+     *
      * @param device 선택한 블루투스 장치
      * @param dialog 장치 목록을 표시하는 다이얼로그
      */
@@ -376,11 +382,11 @@ public class BluetoothActivity extends Activity {
         clientThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                String device_name=null;
+                String device_name = null;
                 try {
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                         Toast.makeText(getApplicationContext(), "connectToSelectedDevice 권한 오류", Toast.LENGTH_SHORT).show();
-                          return;
+                        return;
                     }
 
                     device_name = device.getName();
@@ -392,7 +398,7 @@ public class BluetoothActivity extends Activity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            pairedDeviceTextView.setText("연결장치:" + finalDevice_name);
+                            pairedDeviceTextView.setText("연결된 장치:" + finalDevice_name);
                             Toast.makeText(getApplicationContext(), finalDevice_name + "에 연결합니다.", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         }
