@@ -149,7 +149,7 @@ public class BluetoothActivity extends Activity {
             public void run() {
                 try {
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                        Toast.makeText(getApplicationContext(), "startServer 권한 오류", Toast.LENGTH_SHORT).show();
+                        ///Toast.makeText(getApplicationContext(), "startServer 권한 오류", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     serverSocket = bluetoothAdapter.listenUsingRfcommWithServiceRecord(APP_NAME, MY_UUID);
